@@ -2,7 +2,9 @@ package tw.brad.service;
 
 import java.util.List;
 
+import org.hibernate.query.SortDirection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import tw.brad.model.Customers;
@@ -35,9 +37,14 @@ public class CustomersServiceImpl implements CustomersService{
 	}
 
 	@Override
+	public List<Customers> getByCompanyNameLikeSQL(String key) {
+		String like = "%" + key + "%";
+		return customersRepository.findAllBySQL(like);
+	}
+	
+	@Override
 	public List<Customers> getByCityOrCountry(String city, String country) {
-		// TODO Auto-generated method stub
-		return null;
+		return customersRepository.findByCityOrCountry(city, country, Sort.by(Sort.Direction.ASC, "customerId"));
 	}
 
 }

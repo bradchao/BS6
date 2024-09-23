@@ -38,5 +38,16 @@ public class CustomersController {
 		return customersService.getByCompanyNameLike(key);
 	}
 	
+	@GetMapping("/getByCompanyNameLikeSQL/{key}")
+	public List<Customers> getByCompanyNameLikeSQL(@PathVariable String key) {
+		return customersService.getByCompanyNameLikeSQL(key);
+	}
+
+	@GetMapping("/getByCityOrCountry/{city}/{country}")
+	public List<Customers> getByCityOrCountry(@PathVariable String city,@PathVariable String country) {
+		return customersService.getByCityOrCountry(city, country);
+	}
+	
+	
 	
 }

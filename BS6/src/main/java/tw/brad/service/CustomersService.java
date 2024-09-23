@@ -10,6 +10,7 @@ public interface CustomersService {
 	public List<Customers> getByCompanyName(String companyName);
 	public List<Customers> getByCompanyNameKey(String companyNameKey);
 	public List<Customers> getByCompanyNameLike(String companyNameKey);
+	public List<Customers> getByCompanyNameLikeSQL(String key);
 	
 	public List<Customers> getByCityOrCountry(String city, String country);
 }
