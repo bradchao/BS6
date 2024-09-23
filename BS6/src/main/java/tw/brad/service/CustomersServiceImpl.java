@@ -31,8 +31,7 @@ public class CustomersServiceImpl implements CustomersService{
 
 	@Override
 	public List<Customers> getByCompanyNameLike(String companyNameKey) {
-		// TODO Auto-generated method stub
-		return null;
+		return customersRepository.findAllByCompanyNameLike(companyNameKey);
 	}
 
 	@Override

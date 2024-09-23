@@ -1,5 +1,7 @@
 package tw.brad.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,20 @@ public class CustomersController {
 		return customersService.getById(customerId);
 	}
 	
+	@GetMapping("/getByCompanyName/{companyName}")
+	public List<Customers> getByCompanyName(@PathVariable String companyName) {
+		return customersService.getByCompanyName(companyName);
+	}
+	
+	@GetMapping("/getByCompanyNameKey/{key}")
+	public List<Customers> getByCompanyNameKey(@PathVariable String key) {
+		return customersService.getByCompanyNameKey(key);
+	}
+
+	@GetMapping("/getByCompanyNameLike/{key}")
+	public List<Customers> getByCompanyNameLike(@PathVariable String key) {
+		return customersService.getByCompanyNameLike(key);
+	}
 	
 	
 }
