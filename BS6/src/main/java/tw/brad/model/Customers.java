@@ -15,7 +15,7 @@ public class Customers {
 	@Column(name = "CustomerID")
 	private String customerId;
 	
-	@Column(name = "CompanyName", nullable = false)
+	@Column(name = "CompanyName")
 	private String companyName;
 	
 	@Column(name = "City", nullable = true)
