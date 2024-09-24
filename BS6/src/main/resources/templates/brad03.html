@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	</head>
+	<body>
+		<h1 th:text="${companyName}">iSpan small company</h1>
+		<hr />
+		Brad03 Page
+		<hr />
+		<ul>
+			<li th:each="name:${names}" th:text="${name}"></li>
+		</ul>
+	</body>
+</html>
