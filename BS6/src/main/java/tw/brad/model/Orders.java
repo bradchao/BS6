@@ -60,5 +60,10 @@ public class Orders {
 	@ManyToOne
 	@JoinColumn(name = "CustomerID")
 	private Customers customer;
+
 	
+	@ManyToOne
+	@JoinColumn(name = "EmployeeID")
+	private Employees employee;
+
 }

@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.brad.model.Customers;
+import tw.brad.model.QueryDate;
 import tw.brad.service.CustomersService;
 
 @RequestMapping("/customers")
@@ -22,6 +25,15 @@ public class CustomersController {
 	public Customers getById(@PathVariable String customerId) {
 		return customersService.getById(customerId);
 	}
+
+	@PostMapping("/getByDate/{customerId}")
+	public Customers getByDate(@PathVariable String customerId, 
+				@RequestBody QueryDate queryDate) {
+		System.out.println(queryDate.getMin());
+		System.out.println(queryDate.getMax());
+		return customersService.getById(customerId);
+	}
+
 	
 	@GetMapping("/getByCompanyName/{companyName}")
 	public List<Customers> getByCompanyName(@PathVariable String companyName) {
