@@ -2,12 +2,12 @@ package tw.brad.service;
 
 import java.util.List;
 
-import org.hibernate.query.SortDirection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import tw.brad.model.Customers;
+import tw.brad.model.Orders;
 import tw.brad.repository.CustomersRepository;
 
 @Service
@@ -16,9 +16,20 @@ public class CustomersServiceImpl implements CustomersService{
 	@Autowired
 	private CustomersRepository customersRepository;
 	
+	@Autowired
+	private OrdersService ordersService;
+	
+	
 	@Override
 	public Customers getById(String customerId) {
-		return customersRepository.findById(customerId).orElse(null);
+		Customers customer = customersRepository.findById(customerId).orElse(null); 
+		
+		List<Orders> orders = customer.getOrders();
+		for (Orders order : orders) {
+			order = ordersService.getOrderById(order.getOrderId());
+		}
+		
+		return customer;
 	}
 
 	@Override
