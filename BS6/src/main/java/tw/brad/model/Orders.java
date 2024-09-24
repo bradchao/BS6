@@ -3,6 +3,8 @@ package tw.brad.model;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +27,7 @@ public class Orders {
 
 	// mappedBy 指定 ToMany 的類別中 join 所指定的物件屬性
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)	
+	@JsonManagedReference
 	private List<OrderDetails> orderDetails;
 
 	public Long getOrderId() {

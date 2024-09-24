@@ -1,5 +1,8 @@
 package tw.brad.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -12,9 +15,11 @@ import jakarta.persistence.Table;
 @Table(name = "OrderDetails")
 public class OrderDetails {
 
+	@JsonIgnore
 	@EmbeddedId
 	private OrderDeatilsKey id;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "OrderID")
 	@MapsId("orderId")
