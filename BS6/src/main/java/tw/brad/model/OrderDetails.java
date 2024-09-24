@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "OrderDetails")
@@ -25,6 +26,7 @@ public class OrderDetails {
 	@MapsId("orderId")
 	private Orders order;
 
+	@JsonIgnore
 	@ManyToOne
 	@MapsId("productId")
 	@JoinColumn(name = "ProductID")
@@ -38,6 +40,15 @@ public class OrderDetails {
 	
 	@Column(name = "Discount")
 	private Double discount;
+
+	@Transient		// 不要做 jpa 的 mapping
+	private String productName;
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 
 	public OrderDeatilsKey getId() {
 		return id;
