@@ -10,20 +10,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import tw.brad.model.Cust;
 import tw.brad.model.Customers;
 import tw.brad.model.QueryDate;
-import tw.brad.service.CustomersService;
+import tw.brad.service.CustServiceImpl;
+import tw.brad.service.CustomersServiceImpl;
 
 @RequestMapping("/customers")
 @RestController
 public class CustomersController {
 
 	@Autowired
-	private CustomersService customersService;
+	private CustomersServiceImpl customersService;
+	
+	@Autowired
+	private CustServiceImpl custService;
+
+	@GetMapping("/get")
+	public List<Customers> getAll() {
+		return custService.getAll();
+	}
+	
 	
 	@GetMapping("/get/{customerId}")
 	public Customers getById(@PathVariable String customerId) {
 		return customersService.getById(customerId);
+	}
+	
+	@GetMapping("/getv2/{customerId}")
+	public String getByIdV2(@PathVariable String customerId) {
+		System.out.println("controller:" + custService.getCompanyById(customerId));
+		return custService.getCompanyById(customerId);
+	}
+	
+	@GetMapping("/getv3/{customerId}")
+	public Cust getByIdV3(@PathVariable String customerId) {
+		System.out.println("controller:" + custService.getCompanyById(customerId));
+		return custService.getCompanyByIdV2(customerId);
 	}
 
 	@PostMapping("/getByDate/{customerId}")
