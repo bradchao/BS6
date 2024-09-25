@@ -18,7 +18,7 @@ public class MySecurityConfig {
 	@Bean
 	public SecurityFilterChain myFilterChain(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests()
-					.requestMatchers("/login", "/logout","/brad01").permitAll()
+					.requestMatchers("/login", "/logout","/brad01", "/apidoc", "/swagger-ui/index.html").permitAll()
 					.anyRequest().authenticated()
 					.and()
 						.formLogin()
