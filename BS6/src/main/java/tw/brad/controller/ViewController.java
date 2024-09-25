@@ -56,4 +56,18 @@ public class ViewController {
 		return "brad03";
 	}
 	
+	
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
+	
+	@RequestMapping("/main")
+	public String main() {
+		return "main";
+	}
+	
+	
+	
+	
 }
